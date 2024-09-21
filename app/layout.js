@@ -27,23 +27,12 @@ const geistMono = localFont({
 
 export default function RootLayout({ children }) {
 
-  const [sideBarToggle,setSideBarToggle] = useState(false);
-  const [profilePanelToggle,setProfilePanelToggle] = useState(false);
-  const [searchPopupToggle,setSearchPopupToggle] = useState(false);
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="sticky top-0 z-50">
-          <Header setSearchPopup={setSearchPopupToggle} profilePanel={profilePanelToggle} setProfilePanel={setProfilePanelToggle} sideBarToggle={sideBarToggle} setSideBarToggle={setSideBarToggle}/>
-        </div>
-      <SidePanel sideBarToggle={sideBarToggle} setSideBarToggle={setSideBarToggle} />
-       <ProfileSidePanel profilePanelToggle={profilePanelToggle} setProfilePanelToggle={setProfilePanelToggle}/>
-        {searchPopupToggle?<SearchPopup setSearchPopup={setSearchPopupToggle} />:null}
       
-        <LowHeader setSearchPopup={setSearchPopupToggle} />
         {children}
       </body>
     </html>

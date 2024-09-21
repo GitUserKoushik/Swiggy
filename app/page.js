@@ -5,6 +5,8 @@ import pizza from './Images/pizza.jpg';
 import burger from './Images/burger.webp';
 import biryani from './Images/biryani.jpg';
 import pasta from './Images/pasta.jpg';
+import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 
 
 export default function Home() {
@@ -35,6 +37,9 @@ export default function Home() {
 
   return (
     <div>
+         <div className="sticky top-0 z-50">
+          <Header/>
+        </div>
  <div className="w-[85%] lg:w-[90%] sm:w-[90%] md:w-[92%]  m-auto mt-5 z-0 ">
         <Banner />
       </div>
@@ -47,7 +52,7 @@ export default function Home() {
           {trendingObj.map((items,index)=>{
             if(index<2){
               return(
-                <TrendingCards title={items?.title} priceFrom={items?.startFrom} image={items?.image}/>
+                <TrendingCards key={index} title={items?.title} priceFrom={items?.startFrom} image={items?.image}/>
               )
             }
              
@@ -57,7 +62,7 @@ export default function Home() {
         {trendingObj.map((items,index)=>{
             if(index>=2){
               return(
-                <TrendingCards title={items?.title} priceFrom={items?.startFrom} image={items?.image}/>
+                <TrendingCards key={index} title={items?.title} priceFrom={items?.startFrom} image={items?.image}/>
               )
             }
              
@@ -65,9 +70,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[300px] w-11/12 m-auto bg-[grey] mt-5 ">
-
-      </div>
+   
+      <Footer/>
     </div>
   );
 }

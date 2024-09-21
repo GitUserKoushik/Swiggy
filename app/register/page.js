@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import React from 'react';
 import google from '../Images/google.webp';
+import Link from 'next/link';
 
 export default function Register() {
   return (
     <div className='bg-[white] w-[100%] h-[100vh] md:bg-[#e8e8e8] lg:bg-[#e8e8e8] '>
-        <div className='lg:h-[20px] md:h-[100px] w-full bg-[#e8e8e8] hidden md:block lg:block '>
+        <div className='lg:h-[50px] h-[50px] sm:h-[100px] md:h-[100px] w-full bg-[white] md:bg-[#e8e8e8] lg:bg-[#e8e8e8] '>
 
         </div>
  <div className="w-11/12 m-auto p-2 md:p-4 lg:p-4 bg-[white]  md:border-2 lg:border-2 rounded-xl sm:w-8/12 md:w-8/12 lg:w-5/12 md:shadow-lg lg:shadow-lg">
@@ -23,10 +24,12 @@ export default function Register() {
       </div>
 
       <div className='flex justify-center items-center gap-2 mt-5'> 
-        <input type='checkbox' style={{outline:"none"}}  />
+        <input type='checkbox' style={{outline:"none",cursor:"pointer"}}  />
         <h1 className='text-sm'>
             I hereby accept Swiggys <span className='text-[red] '>
-                Terms & Conditions
+            <Link href="termscons">
+               Terms & Conditions
+                  </Link>
             </span>
         </h1>
 
@@ -39,7 +42,7 @@ export default function Register() {
         </div>
       </div> */}
 
-      <div className="w-full h-[40px] m-auto bg-[#ff4949] rounded-lg flex justify-center items-center mt-5 hover:bg-[red] ">
+      <div className="w-full h-[40px] m-auto bg-[#ff4949] rounded-lg flex justify-center items-center mt-5 hover:bg-[red] cursor-pointer">
           <h1 className="text-[white]  font-bold " >
              Create Account 
           </h1>
@@ -51,8 +54,8 @@ export default function Register() {
       </h1>
 
 
-      <div className="w-full h-[40px] m-auto border-2 border-[lightgrey] rounded-lg flex justify-center items-center mt-5 gap-2 ">
-          <Image className="w-[35px] " src={google} />
+      <div className="w-full h-[40px] m-auto border-2 border-[lightgrey] rounded-lg flex justify-center items-center mt-5 gap-2 cursor-pointer">
+          <Image alt='' className="w-[35px] " src={google} />
           <h1 className="text-[grey]  font-semibold " >
               Sign in with Google
           </h1>
@@ -61,7 +64,9 @@ export default function Register() {
       <div className="border-t-2 border-[lightgrey] w-full h-[50px] md:mt-5 lg:mt-5 mt-10 ">
       <h1 className="text-[grey] text-center font-normal md:pt-3 lg:pt-3 pt-5 " >
               Already have an account? <span className="text-[red] ">
-                Login
+              <Link href="login">
+               Login
+                  </Link>
               </span>
           </h1>
       </div>

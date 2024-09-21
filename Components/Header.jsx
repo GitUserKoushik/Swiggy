@@ -1,13 +1,33 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { IoSearchOutline } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosMenu, IoMdHeartEmpty } from "react-icons/io";
 import { CiMenuFries, CiUser } from "react-icons/ci";
 import Link from 'next/link';
+import SidePanel from './SidePanel';
+import ProfileSidePanel from './ProfileSidePanel';
+import SearchPopup from './SearchPopup';
+import LowHeader from './LowHeader';
 
-export default function Header({sideBarToggle,setSideBarToggle,profilePanel,setProfilePanel,setSearchPopup}) {
+export default function Header({}) {
+
+  const userId = localStorage.getItem("user_id");
+
+  const isLoggedIn =()=>{
+    if(userId !== "" && userId !== null && userId !== undefined){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
+  //All states
+  const [sideBarToggle,setSideBarToggle] = useState(false);
+  const [profilePanelToggle,setProfilePanelToggle] = useState(false);
+  const [searchPopupToggle,setSearchPopupToggle] = useState(false);
 
   return (
     <div>
@@ -17,25 +37,27 @@ export default function Header({sideBarToggle,setSideBarToggle,profilePanel,setP
             <h1>SWIGGY</h1>
           </div>
           <div className="profile_search">
-            <div onClick={()=>setSearchPopup(true)} className="hidden md:block sm:block">
+            <div onClick={()=>setSearchPopupToggle(true)} className="hidden md:block sm:block">
               <IoSearchOutline size={20} />
             </div>
-            <Link href='cart' className="hidden md:block sm:block">
+            {isLoggedIn()?<> <Link href='cart' className="hidden md:block sm:block">
               <PiShoppingCartSimpleLight size={20} />
             </Link>
             <Link href='favorites' className="hidden md:block sm:block">
               <IoMdHeartEmpty size={20} />
-            </Link>
+            </Link></>:null}
+           
 
-            <div onClick={()=>{
-              setProfilePanel(!profilePanel);
+            {isLoggedIn()?  <div onClick={()=>{
+              setProfilePanelToggle(!profilePanelToggle);
               setSideBarToggle(false)
             } } className="profile">
               <CiUser  size={20} />
-            </div>
+            </div>:null}
+          
             <div  onClick={()=>{
               setSideBarToggle(!sideBarToggle)
-              setProfilePanel(false);
+              setProfilePanelToggle(false);
             }} className="block lg:hidden  flex justify-center items-center ">
               <CiMenuFries size={20} />
             </div>
@@ -62,12 +84,15 @@ export default function Header({sideBarToggle,setSideBarToggle,profilePanel,setP
             <option value="">UNDER 800</option>
           </select>
           <Link href='deals' className="cursor-pointer hover:text-[orange]">DEALS & OFFERS</Link>
-          <Link href='aboutus' className="cursor-pointer hover:text-[orange]">ABOUT</Link>
-          <Link href='contactus' className="cursor-pointer hover:text-[orange]">CONTACT</Link>
+          {isLoggedIn()?null:<>  <Link href='login' className="cursor-pointer hover:text-[orange] border-2  p-1 border-[brown] rounded-md ">LOGIN</Link>
+            <Link href='register' className="cursor-pointer text-[white] bg-[brown] border-2 border-[brown] p-1 rounded-md hover:text-[orange]">SIGNUP</Link></>}
+        
         </div>
       </div>
-
-     
+      <SidePanel sideBarToggle={sideBarToggle} setSideBarToggle={setSideBarToggle} />
+       <ProfileSidePanel profilePanelToggle={profilePanelToggle} setProfilePanelToggle={setProfilePanelToggle}/>
+        {searchPopupToggle?<SearchPopup setSearchPopup={setSearchPopupToggle} />:null}
+        <LowHeader isLoggedIn={isLoggedIn} setSearchPopup={setSearchPopupToggle} />
     </div>
   )
 }

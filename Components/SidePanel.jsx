@@ -10,8 +10,9 @@ import { GoHome } from "react-icons/go";
 import { HiOutlineSquares2X2 } from "react-icons/hi2";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { CiMail } from "react-icons/ci";
+import { CiLogin, CiMail } from "react-icons/ci";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { FiUserPlus } from "react-icons/fi";
 
 export default function SidePanel({ setSideBarToggle, sideBarToggle }) {
 
@@ -131,19 +132,19 @@ export default function SidePanel({ setSideBarToggle, sideBarToggle }) {
 
             <Link
               onClick={() => setSideBarToggle(false)}
-              href="aboutus"
+              href="login"
               className="w-full hover:bg-[#ffedd1] hover:text-[brown] p-2 rounded-lg  border-[lightgrey] flex items-center gap-4 cursor-pointer"
             >
               {" "}
-              <PiBuildingOfficeThin size={22} /> ABOUT
+              <CiLogin size={22} /> LOGIN
             </Link>
             <Link
               onClick={() => setSideBarToggle(false)}
-              href="contactus"
+              href="register"
               className="w-full hover:bg-[#ffedd1] hover:text-[brown] p-2  rounded-lg  border-[lightgrey] flex items-center gap-4 cursor-pointer"
             >
               {" "}
-              <CiMail size={22} /> CONTACT
+              <FiUserPlus size={22} /> REGISTER
             </Link>
           </div>
         </div>

@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import { CiSettings, CiUser } from "react-icons/ci";
@@ -8,16 +9,19 @@ import { PiArrowLeftLight, PiHandshakeLight } from "react-icons/pi";
 import { RiCustomerService2Line } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 export default function ProfileSidePanel({
   setProfilePanelToggle,
   profilePanelToggle,
 }) {
 
+  const router = useRouter();
+
     //Logout
-    const logOut = ()=>{
+    const handleLogOut = ()=>{
       localStorage.clear()
-      
+      router.push("login")
    }
 
 
@@ -104,13 +108,16 @@ export default function ProfileSidePanel({
             >
               <RiCustomerService2Line size={22} /> HELP & SUPPORT
             </Link>
-            <Link
-              onClick={() => setProfilePanelToggle(false)}
+            <div
+              onClick={() => {
+                setProfilePanelToggle(false);
+                handleLogOut();
+              }}
               href="login"
               className="w-10z/12 hover:bg-[#ffedd1] hover:text-[brown] p-2 rounded-lg bg-[#ff5050] text-[white] border-[lightgrey] flex items-center justify-center gap-4 cursor-pointer"
             >
               <FiLogOut size={22}/> LOG OUT
-            </Link>
+            </div>
           </div>
         </div>
       </aside>
