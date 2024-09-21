@@ -22,7 +22,7 @@ export default function Register() {
         </div>
       </div>
 
-      <div className='flex justify-center items-center gap-2 mt-5'>
+      <div className='flex justify-center items-center gap-2 mt-5'> 
         <input type='checkbox' style={{outline:"none"}}  />
         <h1 className='text-sm'>
             I hereby accept Swiggys <span className='text-[red] '>
