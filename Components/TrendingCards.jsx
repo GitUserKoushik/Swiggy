@@ -4,7 +4,7 @@ import React from 'react'
 export default function TrendingCards({image,title,priceFrom}) { 
   return (
     <div className='w-[48%] h-[220px] sm:h-[310px] md:h-[265px] p-[5px] lg:h-[300px] border border-[lightgrey] rounded-xl shadow-xl '>
-        <Image className='rounded-lg object-fill h-[40%] sm:h-[50%] md:h-[50%] lg:h-[55%]  ' src={image}/>
+        <Image alt='' className='rounded-lg object-fill h-[40%] sm:h-[50%] md:h-[50%] lg:h-[55%]  ' src={image}/>
         <div className='w-11/12 m-auto text-[brown] text-lg font-bold mt-3'>
             <h1>
              {title}

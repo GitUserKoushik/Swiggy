@@ -27,8 +27,9 @@ export default function Banner() {
     <Slider  {...settings}>
       {arr.map((items, index) => {
         return (
-          <div className="outline-none border-none">
+          <div key={index} className="outline-none border-none">
             <Image
+            alt=""
               className="w-full h-[170px] md:h-[300px] sm:h-[280px] lg:h-[400px] rounded-xl object-fill object-right md:object-left-bottom "
               src={items}
               height={2000}
